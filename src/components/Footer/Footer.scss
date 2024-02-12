@@ -1,0 +1,29 @@
+.footer{
+    background-color: black;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap:1%;
+
+    .footerleft{
+        width: 50%;
+        background-color: aqua;
+    }
+
+    .footerRight{
+        width: 50%;
+        background-color: coral;
+    }
+
+    p{
+        font-size:10px;
+        text-align: end;
+        padding-right:5%;
+        color: white;
+        //font-weight: bold;
+    }
+}
+    
