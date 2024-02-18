@@ -18,7 +18,7 @@ const components = {
   about: About,
   home : Home,
   recipes: Recipes,
-  quandan: Qanda
+  qanda: Qanda
 }
 
 function Layout(props){

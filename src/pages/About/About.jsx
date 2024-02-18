@@ -1,16 +1,40 @@
 import React from 'react'
 import './About.scss'
 
+import  aboutImage  from '../../assets/img/about_csenge.png'
+
 const About = () => {
   return (
     <div className="aboutPage">
-        <h1>Life in a nutsehll:</h1>
-        <text>I am 19 years old, currently I am pursuing my Computer Science degree at ELTE university. I have many hobbies
-        which I like to practice in my spare time. Some of those hobbies are playing volleyball, spending time socialising with my friends
-        practising sports and coding.
-        Er </text>
-        <h1>Early life:</h1>
-        <text>I was born in Romania, in the city of Arad.  </text>
+        <div className="aboutSecondary">
+          <div className="aboutme">
+            <h2>Hobbyk</h2>
+            <p>Nagyon meno dietetiak hallgato vagyok</p>
+          </div>
+          <div className="aboutme">
+            <h2>Célok</h2>
+            <p>Nagyon meno dietetiak hallgato vagyok</p>
+          </div>
+        </div>
+        <div className="aboutMain">
+          <img src={aboutImage} alt="About Image"></img>
+          <h1>Rólam</h1>
+          <p>A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.</p>
+        </div>
+        <div className="aboutSecondary">
+          <div className="aboutme">
+            <h2>Egyetem</h2>
+            <p>Nagyon meno dietetiak hallgato vagyok</p>
+          </div>
+          <div className="aboutme">
+            <h2>Egyetem</h2>
+            <p>A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.
+            A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.
+            </p>
+          </div>
+        </div>
+        
+
     </div>
   )
 }
