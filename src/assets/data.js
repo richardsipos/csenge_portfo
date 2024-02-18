@@ -3,6 +3,11 @@ import food_1_1 from './img/food_1_1.png'
 import food_1_2 from './img/food_1_2.png'
 import food_1_3 from './img/food_1_3.png'
 
+
+
+import qanda_1_q_1 from './img/qa_1_q_1.png'
+import qanda_1_a_1 from './img/qa_1_a_1.png'
+
 export const recipes = [
     {
       id: 1,
@@ -168,7 +173,17 @@ export const recipes = [
     // Add more recipes as needed
   ];
 
+export const qanda = [
+  {
+    id: 1,
+  
+    images: [
+      qanda_1_q_1,
+      qanda_1_a_1
+    ],
+  },
 
+];
 
 
 

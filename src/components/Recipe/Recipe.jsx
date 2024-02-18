@@ -2,12 +2,12 @@ import React from "react";
 import "./Recipe.scss";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Recipe = ({ props }) => {
   return (

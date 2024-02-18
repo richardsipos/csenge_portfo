@@ -1,0 +1,35 @@
+.qandaPage{
+    display: flex;
+    flex-direction: column;
+
+    width: 60%;
+    margin: auto;
+
+    .qandaCardsrow{
+        display: flex;
+        flex-direction: row;
+        height: 25vh;
+        
+
+        .mySwiper{
+            flex:1;
+            height: 100%;
+            width: 100%;
+
+            .swiper-slide img {
+                
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .qandaCardsColumn{
+            background-color: aqua;
+            flex:1;
+        }
+
+    }
+
+}
