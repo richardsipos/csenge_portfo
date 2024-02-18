@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import './Navbar.scss'
-import  logo  from '../../img/randomlogo.svg';
+import  logo  from '../../assets/img/logo_csenge.png'
 
 const Navbar = () =>{
     return (
@@ -18,6 +18,12 @@ const Navbar = () =>{
                     </Link>
                     <Link className="link" to="/about">
                         <h5>About</h5>
+                    </Link>
+                    <Link className="link" to="/recipes">
+                        <h5>Recipes</h5>
+                    </Link>
+                    <Link className="link" to="/qanda">
+                        <h5>Q&A</h5>
                     </Link>
                 </div>
             </div>

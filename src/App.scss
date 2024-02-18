@@ -1,17 +1,11 @@
 .app{
-    height: 100vh;
-    width: 100%;
-    //background-color: #4B4E53;
-    //background-color: #4B4E53;
-    
+    // height: 100vh;
+    // width: 100%;
 
-    .container{
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        
-    }
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: purple;
+    
 }

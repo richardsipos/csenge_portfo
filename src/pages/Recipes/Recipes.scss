@@ -1,0 +1,22 @@
+.recipesPage{
+
+    min-height: calc(100vh - 10vh);
+    background-color: #ece4df; //#ece4df #dac8bc
+    
+    
+
+    .recipesAbout{
+        text-align: center;
+    }
+
+    .recipes{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin: 3% 10% 10% 10%;
+
+        gap: 35vh;
+    }
+
+
+}
