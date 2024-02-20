@@ -8,6 +8,20 @@ import food_1_3 from './img/food_1_3.png'
 import qanda_1_q_1 from './img/qa_1_q_1.png'
 import qanda_1_a_1 from './img/qa_1_a_1.png'
 
+
+import blog_0 from './img/blog_0.png'
+import blog_1_1 from './img/blog_1_1.png'
+import blog_1_2 from './img/blog_1_1.png'
+import blog_1_3 from './img/blog_1_1.png'
+import blog_1_4 from './img/blog_1_1.png'
+import blog_1_5 from './img/blog_1_1.png'
+import blog_2_1 from './img/blog_1_1.png'
+import blog_2_2 from './img/blog_1_1.png'
+import blog_3_1 from './img/blog_1_1.png'
+import blog_3_2 from './img/blog_1_1.png'
+import blog_4_1 from './img/blog_1_1.png'
+import blog_4_2 from './img/blog_1_1.png'
+
 export const recipes = [
     {
       id: 1,
@@ -180,6 +194,47 @@ export const qanda = [
     images: [
       qanda_1_q_1,
       qanda_1_a_1
+    ],
+  },
+
+];
+
+export const blogs = [
+  {
+    id: 0,
+    images: [
+      blog_0
+    ],
+  },
+  {
+    id: 1,
+    images: [
+      blog_1_1,
+      blog_1_2,
+      blog_1_3,
+      blog_1_4,
+      blog_1_5
+    ],
+  },
+  {
+    id: 2,
+    images: [
+      blog_2_1,
+      blog_2_2
+    ],
+  },
+  {
+    id: 3,
+    images: [
+      blog_3_1,
+      blog_3_2
+    ],
+  },
+  {
+    id: 4,
+    images: [
+      blog_4_1,
+      blog_4_2
     ],
   },
 

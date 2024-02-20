@@ -3,11 +3,35 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import { recipes } from '../../assets/data';
-import PaginatedItems from '../../components/Paginator/PaginatedItems.jsx'
+import { blogs } from '../../assets/data';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { HiChevronUp,HiChevronDown } from "react-icons/hi2";
 
 
 const Home = () => {
-  
+
+  const [blogMiddle, setBlogMiddle] = useState(1);
+
+  const handleArrowDown = () => {
+    if (blogMiddle < blogs.length - 2) {
+      console.log(blogMiddle)
+      setBlogMiddle(blogMiddle + 1);
+    }
+  };
+
+  const handleArrowUp = () => {
+    if (blogMiddle > 1) {
+      setBlogMiddle(blogMiddle - 1);
+    }
+  };
+
   return (
     <div className='homePage'>
       <div className="firstPreview">
@@ -28,7 +52,36 @@ const Home = () => {
           <h1>Legujabb infok!</h1>
         </div>
         <div className="posts">
-          {/* <PaginatedItems itemsPerPage={4} />, */}
+          <div className="readScreen">
+            asz
+          </div>
+          <div className="scrollScreen">
+                <HiChevronUp className='arrows' onClick={handleArrowUp}/> 
+                <Swiper className="mySwiper" >  
+                  {blogs[blogMiddle-1].images.map((img,index) => (
+                    <SwiperSlide key={index} className="swiper-slide">
+                      <img src={img} alt="" />
+                    </SwiperSlide>
+                  ))}
+                  
+                </Swiper>
+                <Swiper className="mySwiperMiddle" >
+                  {blogs[blogMiddle].images.map((img,index) => (
+                      <SwiperSlide key={index} className="swiper-slide">
+                        <img src={img} alt="" />
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
+                <Swiper className="mySwiper" > 
+                  {blogs[blogMiddle+1].images.map((img,index) => (
+                      <SwiperSlide key={index} className="swiper-slide">
+                        <img src={img} alt="" />
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
+                <HiChevronDown className='arrows' onClick={handleArrowDown}/> 
+          </div>
+
         </div>
       </div>
     </div>

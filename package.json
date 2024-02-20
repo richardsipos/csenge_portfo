@@ -10,6 +10,7 @@
     "npm": "^10.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router": "^6.22.0",
