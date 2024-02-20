@@ -53,14 +53,20 @@ const Home = () => {
         </div>
         <div className="posts">
           <div className="readScreen">
-            asz
+              <Swiper className="mySwiperLeftFull" >
+                {blogs[blogMiddle].images.map((img,index) => (
+                    <SwiperSlide key={index} className="swiper-slide">
+                      <img src={img} alt="" />
+                    </SwiperSlide>
+                  ))}
+              </Swiper>
           </div>
           <div className="scrollScreen">
-                <HiChevronUp className='arrows' onClick={handleArrowUp}/> 
+                {blogMiddle > 1 ? <HiChevronUp className={'topArrow' + ' arrow'} onClick={handleArrowUp}/> : ""} 
                 <Swiper className="mySwiper" >  
                   {blogs[blogMiddle-1].images.map((img,index) => (
                     <SwiperSlide key={index} className="swiper-slide">
-                      <img src={img} alt="" />
+                      <img src={img} alt="" className='upper'/>
                     </SwiperSlide>
                   ))}
                   
@@ -75,11 +81,14 @@ const Home = () => {
                 <Swiper className="mySwiper" > 
                   {blogs[blogMiddle+1].images.map((img,index) => (
                       <SwiperSlide key={index} className="swiper-slide">
-                        <img src={img} alt="" />
+                        <img src={img} className='bottom' alt="" />
                       </SwiperSlide>
                     ))}
+                    
                 </Swiper>
-                <HiChevronDown className='arrows' onClick={handleArrowDown}/> 
+                {blogMiddle<blogs.length-2 ? <HiChevronDown className={'bottomArrow' + ' arrow'} onClick={handleArrowDown}/> : ""}
+                
+                
           </div>
 
         </div>

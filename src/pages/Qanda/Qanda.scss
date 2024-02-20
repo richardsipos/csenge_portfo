@@ -1,35 +1,63 @@
 .qandaPage{
+
+    margin:auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    height: 80vh;
+    width: 70%;
+    gap:5%;
+    justify-content: center;
 
-    width: 60%;
-    margin: auto;
-
-    .qandaCardsrow{
+    margin:5% 15% 5% 15%;
+    .qandaCol1{
         display: flex;
-        flex-direction: row;
-        height: 25vh;
+        flex:2;
+        flex-direction: column;
+        gap:5%;
+
+        background-color: blue;
+
         
 
-        .mySwiper{
-            flex:1;
-            height: 100%;
-            width: 100%;
+        
+    }
 
-            .swiper-slide img {
-                
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+    .qandaCol2{
+        display: flex;
+        height: 50%;
+        margin: 15% 0% 15% 0%;
+        flex:2;
+        background-color: yellow;
+    }
 
-        .qandaCardsColumn{
-            background-color: aqua;
-            flex:1;
-        }
+    .qandaCol3{
+        display: flex;
+        flex:2;
+        flex-direction: column;
+        gap:5%;
+        background-color: red;
 
     }
 
+}
+
+
+.qandaRow{
+    flex:3;
+    height: 60%;
+    padding: 5%;
+
+    background-color: rgb(5, 34, 34) !important;
+
+    border: 3px solid beige;
+    border-radius: 10px;
+}
+
+.qandaDetails{
+    flex:1;
+    height: 30%;
+    background-color: rgb(118, 120, 186) !important;
+
+    border: 3px solid beige;
+    border-radius: 10px;
 }
