@@ -4,7 +4,9 @@ import React from 'react'
 
 const QuestionAnswerCard = ( {props} ) => {
   return (
-    <div>QuestionAnswerCard</div>
+    <div className="card">
+        
+    </div>
   )
 }
 

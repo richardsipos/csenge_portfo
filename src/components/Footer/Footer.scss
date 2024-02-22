@@ -1,14 +1,23 @@
 .footer{
+    // background-color: black;
+    // width: 100%;
+    // font-size: 1rem;
+    // margin-top: auto;
+
+
+    // display: flex;
+    // flex-direction: row;
+
+    // align-self: flex-end;
+
+
     background-color: black;
-    height: 10%;
+    // min-height: 50px; /* Set a minimum height for the footer */
     width: 100%;
     font-size: 1rem;
-
     display: flex;
     flex-direction: row;
-    
-
-    align-self: flex-end;
+    margin-top: 5%;
 
     .footerLeft{
         
@@ -18,7 +27,7 @@
         justify-content: start;
 
         height: 100%;
-        margin: 0%;
+        // margin: 0%;
         padding: 0%;
         background-color: turquoise;
     }
@@ -31,7 +40,7 @@
         justify-content: end;
 
         height: 100%;
-        margin: 0%;
+        // margin: 0%;
         padding: 0%;
         background-color: coral;
 

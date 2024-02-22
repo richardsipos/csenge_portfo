@@ -206,12 +206,52 @@ export const qanda = [
         "Miert kek az eg?"
       ],
       answers:[
-        "Aze mert az!"
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       ]
       
     },
     {
       id: 2,
+      questions:[
+        "Kerdesem:"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 3,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "LEGSZEBB!"
+      ]
+      
+    },
+    {
+      id: 4,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 5,
+      questions:[
+        "Miert kek az eg?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 6,
       questions:[
         "Tudod ki szep?"
       ],
@@ -221,7 +261,137 @@ export const qanda = [
       
     },
     {
-      id: 3,
+      id: 7,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 8,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.!"
+      ]
+      
+    },
+    {
+      id: 9,
+      questions:[
+        "Miert kek az eg?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 10,
+      questions:[
+        "Tudod ki szep?"
+      ],
+      answers:[
+        "Te kedvesem!"
+      ]
+      
+    },
+    {
+      id: 11,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "LEGSZEBB!"
+      ]
+      
+    },
+    {
+      id: 12,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 13,
+      questions:[
+        "Miert kek az eg?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 14,
+      questions:[
+        "Tudod ki szep?"
+      ],
+      answers:[
+        "Integer luctus, velit ac consectetur eleifend, nulla libero ultrices libero, id elementum erat ex efficitur dui. Donec nisl lacus, lacinia non nisi a, pulvinar porta nisi. Morbi dictum lorem ac dapibus blandit. Sed porttitor, mauris id egestas mollis, ligula dui congue ipsum, ut accumsan ipsum lorem vel leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      ]
+      
+    },
+    {
+      id: 15,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "LEGSZEBB!"
+      ]
+      
+    },
+    {
+      id: 16,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "LEGSZEBB!"
+      ]
+      
+    },
+    {
+      id: 17,
+      questions:[
+        "Miert kek az eg?"
+      ],
+      answers:[
+        "Aze mert az!"
+      ]
+      
+    },
+    {
+      id: 18,
+      questions:[
+        "Tudod ki szep?"
+      ],
+      answers:[
+        "Te kedvesem!"
+      ]
+      
+    },
+    {
+      id: 19,
+      questions:[
+        "Szep a mosolyom?"
+      ],
+      answers:[
+        "LEGSZEBB!"
+      ]
+      
+    },
+    {
+      id: 20,
       questions:[
         "Szep a mosolyom?"
       ],
