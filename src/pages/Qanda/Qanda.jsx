@@ -10,7 +10,7 @@ const Qanda = () => {
       <div className="qandaCol1">
         <div className="qandaRow">
           {qanda.slice(0, 10).filter((qa, index) => index % 2 === 0).map((qa, index) => (
-            <div key={index}>
+            <div className="questionAnswer" key={index}>
               <h4>{qa.questions}</h4>
               <p>{qa.answers}</p>
             </div>
@@ -36,7 +36,7 @@ const Qanda = () => {
         </div>
         <div className="qandaRow">
           {qanda.slice(0, 10).filter((qa, index) => index % 2 === 1).map((qa, index) => (
-            <div key={index}>
+            <div className="questionAnswer" key={index}>
               <h4>{qa.questions}</h4>
               <p>{qa.answers}</p>
             </div>

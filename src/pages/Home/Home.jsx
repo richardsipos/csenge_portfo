@@ -88,12 +88,35 @@ const Home = () => {
                 </Swiper>
                 {blogMiddle<blogs.length-2 ? <HiChevronDown className={'bottomArrow' + ' arrow'} onClick={handleArrowDown}/> : ""}
                 
-                
           </div>
 
         </div>
+        
+      </div>
+      <div className="qanda">
+          <h1>Do you have a question? Contact me without remorse!</h1>
+          <h2>But ofc check first if the question was already answered on my Q&A page</h2>
+          
+          <a href="/qanda"><button>Q&A</button></a>
+      </div>
+      <div className="recipes">
+        <div className="homeText">
+          <h2>Curious of new recipes? Check mines out!!! </h2>
+        </div>
+        <div className="homeImg">
+          <img src={recipes[0].images[0]}></img>
+        </div>
+      </div>
+      <div className="about">
+        <div className="homeImg">
+          <img src={recipes[0].images[0]}></img>
+        </div>
+        <div className="homeText">
+          <h2>If you only want to find out more about me, just check out my about page.</h2>
+        </div>
       </div>
     </div>
+
   )
 }
 
