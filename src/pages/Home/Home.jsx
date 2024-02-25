@@ -49,7 +49,7 @@ const Home = () => {
       
       <div className="blogPosts">
         <div className="title">
-          <h1>Legujabb infok!</h1>
+          <p>Latest news!</p>
         </div>
         <div className="posts">
           <div className="readScreen">
