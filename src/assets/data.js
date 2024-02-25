@@ -187,18 +187,6 @@ export const recipes = [
     // Add more recipes as needed
   ];
 
-// export const qanda = [
-//   {
-//     id: 1,
-  
-//     images: [
-//       qanda_1_q_1,
-//       qanda_1_a_1
-//     ],
-//   },
-
-// ];
-
 export const qanda = [
     {
       id: 1,

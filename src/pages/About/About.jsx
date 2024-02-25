@@ -9,11 +9,11 @@ const About = () => {
         <div className="aboutSecondary">
           <div className="aboutme">
             <h2>Hobbyk</h2>
-            <p>Nagyon meno dietetiak hallgato vagyok</p>
+            <p>A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek. A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.</p>
           </div>
           <div className="aboutme">
             <h2>Célok</h2>
-            <p>Nagyon meno dietetiak hallgato vagyok</p>
+            <p>A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek. A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.</p>
           </div>
         </div>
         <div className="aboutMain">
@@ -24,7 +24,7 @@ const About = () => {
         <div className="aboutSecondary">
           <div className="aboutme">
             <h2>Egyetem</h2>
-            <p>Nagyon meno dietetiak hallgato vagyok</p>
+            <p>A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek. A 2 szobás biztonsági őr aki nem iszik Márc 31-től, de berendezett 52 éves, a két havi kauciót köszöni csak hosszú távú BP-nek.</p>
           </div>
           <div className="aboutme">
             <h2>Egyetem</h2>

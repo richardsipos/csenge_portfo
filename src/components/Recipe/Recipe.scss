@@ -95,3 +95,39 @@
 
     
 }
+
+
+
+@media (max-width: 1400px) {
+
+
+    .recipe{
+        margin: 5% 0%;
+
+        .recipeTopEven, .recipeTopOdd{
+            // padding: 15% 0%
+            
+            .ingredients{
+                font-size: 0.9rem;
+            }
+        }
+
+    }
+}
+
+@media (max-width: 700px) {
+
+
+    .recipe{
+        margin: 15% 0%;
+
+        .recipeTopEven, .recipeTopOdd{
+            // padding: 15% 0%
+            
+            .ingredients{
+                font-size: 0.7rem;
+            }
+        }
+
+    }
+}

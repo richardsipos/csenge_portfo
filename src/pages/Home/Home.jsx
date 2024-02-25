@@ -35,7 +35,9 @@ const Home = () => {
   return (
     <div className='homePage'>
       <div className="firstPreview">
-        <img className="motivationalImage" src={recipes[0].images[0]}></img>
+        <div className="motivationalImage">
+          <img src={recipes[0].images[0]}></img>
+        </div>
         <div className="motivationalQuoute">
           <h1>Mondom mivan!</h1>
         </div>
@@ -44,7 +46,9 @@ const Home = () => {
         <div className="motivationalQuoute">
           <h1>Igenis fontos az egeszseges kajalas!</h1>
         </div>
-        <img className="motivationalImage" src={recipes[0].images[0]}></img>
+        <div className="motivationalImage">
+          <img src={recipes[0].images[0]}></img>
+        </div>
       </div>
       
       <div className="blogPosts">
@@ -102,17 +106,26 @@ const Home = () => {
       <div className="recipes">
         <div className="homeText">
           <h2>Curious of new recipes? Check mines out!!! </h2>
+          <a href="/recipes"><button>Recipes</button></a>
         </div>
         <div className="homeImg">
-          <img src={recipes[0].images[0]}></img>
+          <div className="imgAndCaption">
+              <img src={recipes[0].images[0]}></img>
+              <p>~With love!~</p>
+          </div>
+
         </div>
       </div>
       <div className="about">
         <div className="homeImg">
-          <img src={recipes[0].images[0]}></img>
+          <div className="imgAndCaption">
+              <img src={recipes[0].images[0]}></img>
+              <p>~With love!~</p>
+          </div>
         </div>
         <div className="homeText">
           <h2>If you only want to find out more about me, just check out my about page.</h2>
+          <a href="/about"><button>About Me</button></a>
         </div>
       </div>
     </div>
