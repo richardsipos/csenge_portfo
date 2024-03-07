@@ -5,6 +5,10 @@ import About  from './pages/About/About.jsx'
 import Home   from  './pages/Home/Home.jsx'
 import Recipes  from  './pages/Recipes/Recipes.jsx'
 import Qanda  from './pages/Qanda/Qanda.jsx'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 import {
   createBrowserRouter,
@@ -56,9 +60,12 @@ const router = createBrowserRouter ([
 ]);
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <div className="app">
-        <RouterProvider router={router}/>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+        </QueryClientProvider>
     </div>
   );
 }
