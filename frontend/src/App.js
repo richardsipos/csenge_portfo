@@ -5,6 +5,8 @@ import About  from './pages/About/About.jsx'
 import Home   from  './pages/Home/Home.jsx'
 import Recipes  from  './pages/Recipes/Recipes.jsx'
 import Qanda  from './pages/Qanda/Qanda.jsx'
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import {
   QueryClient,
   QueryClientProvider,
@@ -13,8 +15,6 @@ import {
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Outlet,
 } from "react-router-dom";
 
 
@@ -22,7 +22,9 @@ const components = {
   about: About,
   home : Home,
   recipes: Recipes,
-  qanda: Qanda
+  qanda: Qanda,
+  login: Login,
+  register: Register,
 }
 
 function Layout(props){
@@ -56,6 +58,14 @@ const router = createBrowserRouter ([
     path:"/qanda",
     element: <Layout name="qanda"/>,
     children:[],
+  },
+  {
+    path: "/register",
+    element: <Register name="register" />,
+  },
+  {
+    path: "/login",
+    element: <Login name="login"/>,
   },
 ]);
 

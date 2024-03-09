@@ -1,36 +1,35 @@
-import Qanda from "../models/qanda.model.js";
+import Recipe from "../models/recipe.model.js";
 // import createError from "../utils/createError.js";
 
-export const createQanda = async (req, res, next) => {
+export const createRecipe = async (req, res, next) => {
 //   if (req.id === null)
     // return next(createError(403, "No id specified."));
 
     console.log("Hoppa")
-  const newQanda = new Qanda({
+  const newRecipe = new Recipe({
     id: req.id,
     ...req.body,
   });
 
   try {
-    const savedQanda = await newQanda.save();
-    res.status(201).json(savedQanda);
+    const savedRecipe = await newRecipe.save();
+    res.status(201).json(savedRecipe);
   } catch (err) {
     next(err.data);
   }
 };
 
 
-export const getQandas = async (req, res, next) => {
+export const getRecipes = async (req, res, next) => {
     const q = req.query;
     // const filters = {
     //   ...(q.id && { id: q.id }),
     // };
     console.log("Get")
     try {
-      const qandas = await Qanda.find();//.sort({ [q.sort]: -1 });  //.find(filters).
-      res.status(200).send(qandas);
+      const recipes = await Recipe.find();
+      res.status(200).send(recipes);
     } catch (err) {
-      // console.log("Nincs error")
       next(err);
     }
   };

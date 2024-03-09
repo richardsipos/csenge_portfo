@@ -1,9 +1,26 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import './Navbar.scss'
 import  logo  from '../../assets/img/logo_csenge.png'
+import newRequest from "../../utils/newRequest";
+
+
 
 const Navbar = () =>{
+
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+          await newRequest.post("/auth/logout");
+          localStorage.setItem("currentUser", null);
+          navigate("/");
+        } catch (err) {
+          console.log(err);
+        }
+    };
+
     return (
         <div className = "navbar">
             <div className="containerNav">
@@ -25,6 +42,23 @@ const Navbar = () =>{
                     <Link className="link" to="/qanda">
                         <h5>Q&A</h5>
                     </Link>
+                </div>
+                <div className="auth">
+                    {currentUser ? (
+                        <div className="deauthentification">
+                            <p>Welcome <br /> {currentUser.fullname}</p>
+                            <button onClick={handleLogout}>Log out</button>
+                        </div>
+                    ) : (
+                        <div className="authentification">
+                            <Link to="/login">
+                                <h5>Login</h5>
+                            </Link>
+                            <Link to="/register">
+                                <h5>Register</h5>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
