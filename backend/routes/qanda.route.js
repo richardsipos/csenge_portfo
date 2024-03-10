@@ -9,12 +9,16 @@ import express from "express";
 
 import {
     createQanda,
-    getQandas
+    getQandas,
+    deleteQanda,
+    editQanda
 } from "../controllers/qanda.controller.js";
 
 const router = express.Router();
 
 router.post("/", createQanda);
 router.get("/", getQandas);
+router.delete("/:id", deleteQanda);
+router.patch("/:id", editQanda);
 
 export default router;

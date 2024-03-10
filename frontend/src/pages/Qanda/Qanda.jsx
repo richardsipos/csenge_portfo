@@ -6,86 +6,156 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useLocation } from "react-router-dom";
 
-
 const Qanda = () => {
-
-  const [sort, setSort] = useState("id");
   const [open, setOpen] = useState(false);
+  const [openQandaPreview, setOpenQandaPreview] = useState(false);
+  const [chooseQanda, setChooseQanda] = useState(null);
   const minRef = useRef();
   const maxRef = useRef();
+
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const { search } = useLocation();
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["qandas"],
-    queryFn: () => newRequest.get(`/qandas`).then((res) => {
-          console.log(search)
-          console.log(res);
-          return res.data;
-        }),
-      
-      // newRequest
-      //   .get(
-      //     `/qandas${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
-      //   )
-      //   .then((res) => {
-      //     console.log(search)
-      //     console.log(res);
-      //     return res.data;
-      //   }),
+    queryFn: () =>
+      newRequest.get(`/qandas`).then((res) => {
+        console.log(search);
+        console.log(res);
+        return res.data;
+      }),
   });
 
-  console.log(data);
-
-  const reSort = (type) => {
-    setSort(type);
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    refetch();
-  }, [sort]);
-
-  const apply = () => {
-    refetch();
+  const handleSave = async () => {
+    try {
+      // Perform the PATCH request with the updated form data
+      await newRequest.patch(`/qandas/${chooseQanda.id}`,chooseQanda);
+      // Refetch the data to update the UI
+      refetch();
+    } catch (error) {
+      console.error("Error updating Q&A pair:", error);
+    }
   };
 
 
   return (
     <div className="qandaPage">
+      {currentUser.isAdmin && (
+        <div className="adminDashboard">
+          <div className="adminTitle">
+            Admin Dashboard
+          </div>
+          <div className="functions">
+          <div className="createQanda">
+            <button onClick={() => setOpen(!open)}>Create Q&A</button>
+            {open && (
+              <div className="createQandaForm">
+                <input type="text" placeholder="Question" ref={minRef} />
+                <input type="text" placeholder="Answer" ref={maxRef} />
+                <button
+                  onClick={async () => {
+                    newRequest.post("/qandas", {
+                      questions: minRef.current.value,
+                      answers: maxRef.current.value,
+                    });
+                    refetch();
+                    setOpen(false);
+                  }}
+                >
+                  Create
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="deleteQanda">
+           { isLoading
+              ? "loading"
+              : error
+              ? "Something went wrong!"
+              : data.map((qanda) => ( 
+                <div className="deleteQandaForm" key={qanda.id}>
+                  <h4>{qanda.questions}</h4>
+                  <button
+                    onClick={async () =>{
+                      await newRequest.delete(`/qandas/${qanda.id}`);
+                      refetch();
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+            ))}
+          </div>
+          <div className="chooseQanda">
+          
+          <select onChange={(e) => {
+                setOpenQandaPreview(false);
+                
+                //qanda.id === e.target.value));
+                console.log("Before")
+                console.log(data)
+                console.log(e.target.value)
+                setChooseQanda(data.find(qanda => qanda.id == e.target.value));
+                console.log(chooseQanda)
+                console.log("After")
+                
+              }}>
+          
+              {
+               !isLoading && data.map((qanda) => (
+                  <option value={qanda.id}>{qanda.questions}</option>
+                ))
+              }
+            </select>
+            <button onClick={()=>setOpenQandaPreview(true)}>Preview</button>
+            {openQandaPreview &&
+              <div className="previewQanda">
+                OPEN PREVIEW
+                {console.log(chooseQanda)}
+                <div className="chooseQandaTitle">
+                  {chooseQanda.title}
+                </div>
+                <div className="chooseQandaQuestions">
+                  {chooseQanda.questions}
+                </div>
+                <div className="chooseQandaAnswers">
+                  {chooseQanda.answers}
+                </div>
+                <div className="chooseQandaDisplay">
+                  <label>Display </label>
+                  <input
+                    type="checkbox"
+                    checked={chooseQanda.display}
+                    onChange={()=>setChooseQanda({...chooseQanda, display: !chooseQanda.display})}
+                  />
+                </div>
+                <button onClick={handleSave}>Save</button>
+              </div>
+              
+            }
+            
+          </div>
+          </div>
+          
+        </div>
+      )}
       <div className="qandaPageTitle">
         <h1>Q&A</h1>
       </div>
       <div className="qandaPageContent">
         <div className="qandaCol1">
           <div className="qandaRow">
-
-
-            {/* {qanda
-              .slice(0, 10)
-              .filter((qa, index) => index % 2 === 0)
-              .map((qa, index) => (
-                <div className="questionAnswer" key={index}>
-                  <h4>{qa.questions}</h4>
-                  <p>{qa.answers}</p>
-                </div>
-              ))} */}
-            {console.log(data)}
-            {isLoading ? (
-              "loading"
-            ) : error ? (
-              "Something went wrong!"
-            ) : ( data
-              .slice(0, 10)
-              .filter((qanda, index) => index % 2 === 0)
-              .map((qanda) => 
-                <div className="questionAnswer" key={qanda.id}>
-                  <h4>{qanda.questions}</h4>
-                  <p>{qanda.answers}</p>
-                </div>
-              )
-            )}
-
-
+            {isLoading
+              ? "loading"
+              : error
+              ? "Something went wrong!"
+              : data
+                  .map((qanda) => ( qanda.display === true &&
+                    <div className="questionAnswer" key={qanda.id}>
+                      <h4>{qanda.questions}</h4>
+                      <p>{qanda.answers}</p>
+                    </div>
+                  ))}
           </div>
           <div className="qandaDetails">
             <h5>Only advices</h5>

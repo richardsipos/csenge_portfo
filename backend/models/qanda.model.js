@@ -14,6 +14,10 @@ const QandaSchema = new Schema(
     answers: {
       type: String,
       required: true,
+    },
+    display:{
+      type: Boolean,
+      default: false
     }
   },
   {

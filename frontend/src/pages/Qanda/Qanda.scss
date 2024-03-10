@@ -77,6 +77,46 @@
   }
 
 
+  .adminDashboard{
+
+    background-color: rgb(250, 84, 84);
+    padding-top: 3%;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap:3%;
+
+    .adminTitle{
+      color: white;
+      font-size: 2rem;
+    }
+
+    .functions{
+      display: flex;
+      flex-direction: row;
+      gap: 5%;
+      justify-content: center;
+    }
+
+
+    .createQanda{
+      display: flex;
+      flex:1;
+      
+    }
+
+    .deleteQanda{
+      display: flex;
+      flex: 1;
+    }
+
+    .chooseQanda{
+      display: flex;
+      flex: 1;
+    }
+  }
+
 }
 
 @media (max-width: 900px) {

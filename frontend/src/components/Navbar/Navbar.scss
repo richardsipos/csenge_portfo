@@ -59,14 +59,17 @@
         }
 
         .auth{
-                        
+            
+
+
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            margin: 0% 0% 0% 2%;
+            padding:1.5%;
 
-            margin: 0% 1% 0% 3%;
-            padding:1%;
+
             
             border-left: 3px solid rgb(81, 88, 88);
 
@@ -97,15 +100,21 @@
 
             }
 
-            .authentification{
-           
-                
-                display: flex;
-                flex-direction: row;
-                text-decoration: none;
-                color: inherit;
-                gap:20px;
-                padding: 1%;
+            .authentification {
+                .linkRegister,
+                .linkLogin {
+                  text-decoration: none;
+                  color: white;
+            
+                  h6 {
+                    background-color: rgb(106, 106, 106);
+                    padding: 0.4rem; /* Adjust padding as needed */
+                    margin: 0.5rem; /* Remove margin to ensure full padding effect */
+                    overflow: hidden;
+                    border-radius: 5%;
+                  }
+                }
+
 
                 &:hover{
                     background-color: #F2E4CF;

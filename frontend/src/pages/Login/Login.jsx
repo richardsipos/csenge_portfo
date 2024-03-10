@@ -40,8 +40,8 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="buttons">
-            <button onClick={()=>{navigate("/")}}>Return</button>
             <button type="submit">Login</button>
+            <button onClick={()=>{navigate("/")}}>Return</button>
         </div>
 
         {error 
