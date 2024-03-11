@@ -34,10 +34,10 @@ const Recipe = ({ props }) => {
             modules={[Autoplay, EffectFade, Navigation, Pagination]}
             className="mySwiper"
           >
-            {console.log("IMAGES:",props.images)}
+            
             {props.images.length > 0 ? props.images.map((imgsrc, index) => (
               <SwiperSlide className="swiper-slide">
-                {console.log("Image Source:",imgsrc)}
+              
                 <img key={imgsrc} src={imgsrc} alt={`Swiper Image ${index}`} />{" "}
               </SwiperSlide>
             ))

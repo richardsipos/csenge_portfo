@@ -23,14 +23,15 @@ const Recipes = () => {
     queryKey: ["recipes"],
     queryFn: () =>
       newRequest.get(`/recipes`).then((res) => {
-        return res.data;
+        return res.data.sort((a, b) => b.id - a.id);
       }),
   });
 
   const [recipeData, setRecipeData] = useState({
     title: '',
-    ingredients: '',
+    ingredients: [],
     preparation: '',
+    images: [],
   });
 
   const handleInputChange = (e) => {
@@ -56,16 +57,18 @@ const Recipes = () => {
           return url;
         })
       );
-      console.log("\nImages: ", images[0]);
       setUploading(false);
-      //dispatch({ type: "ADD_IMAGES", payload: { images } });
-      setRecipeData((prevData) => ({
-        ...prevData,
-        images: images,
+      const imageLinks = images.map((image) => String(image));
+      console.log('Uplaoded: ',imageLinks)
+      setRecipeData((recipeData) => ({
+        ...recipeData,
+        images: imageLinks,
       }));
+
+      return imageLinks;
     } catch (err) {
-      console.log("PROBLEMS");
       console.log(err.data);
+      return [];
     }
   };
 
@@ -74,16 +77,22 @@ const Recipes = () => {
     event.preventDefault();
     try {
 
-      await handleUpload();
+      const imageLinks = await handleUpload();
       await newRequest.post("/recipes", {
         title: recipeData.title,
         preparation: recipeData.preparation,
         ingredients: recipeData.ingredients.split(';').map((ingredient) => ingredient.trim()), 
-        images: recipeData.images,
+        images: imageLinks,
       }); //recipeData
       
+      await setRecipeData({
+        title: '',
+        ingredients: [],
+        preparation: '',
+        images: [],
+      });
+      setOpen(false)
       refetch();
-      setOpen(false);
 
     } catch (error) {
       console.error('Error submitting recipe:', error);
