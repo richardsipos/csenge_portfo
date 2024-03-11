@@ -1,6 +1,6 @@
 import React from "react";
 import "./Recipe.scss";
-
+import Logo_csenge from "../../assets/img/logo_csenge.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -16,6 +16,7 @@ const Recipe = ({ props }) => {
         <div className="recipeTopEven">
           <Swiper
             spaceBetween={30}
+            slidesPerView={props.images.length}
             pagination={{
               clickable: true,
             }}
@@ -33,12 +34,15 @@ const Recipe = ({ props }) => {
             modules={[Autoplay, EffectFade, Navigation, Pagination]}
             className="mySwiper"
           >
-            {props.images.map((imgsrc, index) => (
+            {console.log("IMAGES:",props.images)}
+            {props.images.length > 0 ? props.images.map((imgsrc, index) => (
               <SwiperSlide className="swiper-slide">
-                {" "}
-                <img src={imgsrc} alt={`Swiper Image ${index}`} />{" "}
+                {console.log("Image Source:",imgsrc)}
+                <img key={imgsrc} src={imgsrc} alt={`Swiper Image ${index}`} />{" "}
               </SwiperSlide>
-            ))}
+            ))
+              : <SwiperSlide className="swiper-slide"><img src={Logo_csenge} alt="placeholder" /></SwiperSlide>
+          }
           </Swiper>
 
           <div className="ingredients">

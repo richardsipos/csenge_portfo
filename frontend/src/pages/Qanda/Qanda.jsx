@@ -40,7 +40,7 @@ const Qanda = () => {
 
   return (
     <div className="qandaPage">
-      {currentUser.isAdmin && (
+      {currentUser && currentUser.isAdmin && (
         <div className="adminDashboard">
           <div className="adminTitle">
             Admin Dashboard
@@ -90,15 +90,7 @@ const Qanda = () => {
           
           <select onChange={(e) => {
                 setOpenQandaPreview(false);
-                
-                //qanda.id === e.target.value));
-                console.log("Before")
-                console.log(data)
-                console.log(e.target.value)
-                setChooseQanda(data.find(qanda => qanda.id == e.target.value));
-                console.log(chooseQanda)
-                console.log("After")
-                
+                setChooseQanda(data.find(qanda => qanda.id == e.target.value));            
               }}>
           
               {

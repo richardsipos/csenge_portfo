@@ -2,12 +2,15 @@ import Recipe from "../models/recipe.model.js";
 // import createError from "../utils/createError.js";
 
 export const createRecipe = async (req, res, next) => {
-//   if (req.id === null)
-    // return next(createError(403, "No id specified."));
 
-    console.log("Hoppa")
-  const newRecipe = new Recipe({
-    id: req.id,
+  console.log("HoppaRecept")
+  console.log(req.body.images)
+  const latestRecipe = await Recipe.findOne({}, {}, { sort: { _id: -1 } });
+  const latestId = latestRecipe ? latestRecipe.id : 0;
+
+  const newId = latestId + 1;
+  const newRecipe= new Recipe({
+    id: newId,
     ...req.body,
   });
 
@@ -15,6 +18,7 @@ export const createRecipe = async (req, res, next) => {
     const savedRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (err) {
+    console.log("ERRORRRRR")
     next(err.data);
   }
 };
@@ -22,9 +26,6 @@ export const createRecipe = async (req, res, next) => {
 
 export const getRecipes = async (req, res, next) => {
     const q = req.query;
-    // const filters = {
-    //   ...(q.id && { id: q.id }),
-    // };
     console.log("Get")
     try {
       const recipes = await Recipe.find();
