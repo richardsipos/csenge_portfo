@@ -11,7 +11,6 @@ const Recipes = () => {
 
   const [open, setOpen] = useState(false);
   const [openRecipePreview, setOpenRecipePreview] = useState(false);
-  const [chooseRecipe, setChooseRecipe] = useState(null);
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
@@ -28,6 +27,7 @@ const Recipes = () => {
   });
 
   const [recipeData, setRecipeData] = useState({
+    id:0,
     title: '',
     ingredients: [],
     preparation: '',
@@ -35,7 +35,6 @@ const Recipes = () => {
   });
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
     setRecipeData((state) => ({
       ...state,
       [e.target.id]: e.target.value,
@@ -86,6 +85,7 @@ const Recipes = () => {
       }); //recipeData
       
       await setRecipeData({
+        id:0,
         title: '',
         ingredients: [],
         preparation: '',
@@ -98,6 +98,30 @@ const Recipes = () => {
       console.error('Error submitting recipe:', error);
     }
   };
+
+  const handleSave = async (event) => {
+    event.preventDefault();
+    try {
+      console.log("recipeData: ", recipeData);
+      const imageLinks = await handleUpload();
+      console.log("elotte")
+      await newRequest.patch(`/recipes/${recipeData.id}`,         
+      {
+        id: recipeData.id,
+        title: recipeData.title,
+        preparation: recipeData.preparation,
+        ingredients: recipeData.ingredients,
+        images: imageLinks,
+      });
+      console.log("gatya")
+      setOpen(false)
+      refetch();
+    }
+    catch (error) {
+      console.error('Error saving recipe:', error);
+    }
+  };
+
 
 
   return (
@@ -149,17 +173,17 @@ const Recipes = () => {
                 </form>
               )}
             </div>
-            {/* <div className="deleteQanda">
+            <div className="deleteRecipe">
               {isLoading
                 ? "loading"
                 : error
                 ? "Something went wrong!"
-                : data.map((qanda) => (
-                    <div className="deleteQandaForm" key={qanda.id}>
-                      <h4>{qanda.questions}</h4>
+                : data.map((recipe) => (
+                    <div className="deleteRecipeForm" key={recipe.id}>
+                      <h4>{recipe.title}</h4>
                       <button
                         onClick={async () => {
-                          await newRequest.delete(`/qandas/${qanda.id}`);
+                          await newRequest.delete(`/recipes/${recipe.id}`);
                           refetch();
                         }}
                       >
@@ -168,6 +192,50 @@ const Recipes = () => {
                     </div>
                   ))}
             </div>
+            <div className="editRecipe">
+              <select
+                onChange={(e) => {
+                  setOpenRecipePreview(false);
+                  setRecipeData(
+                    data.find((recipe) => recipe.id == e.target.value)
+                  );
+                  console.log(recipeData.id);
+                }}
+              >
+                {!isLoading &&
+                  data.map((recipe) => (
+                    <option value={recipe.id}>{recipe.title}</option>
+                  ))}
+              </select>
+              <button onClick={() => {setOpenRecipePreview(true);}}>Preview</button>
+              {openRecipePreview && recipeData && (
+                <div className="previewRecipe">
+                  <div className="recipeDataTitle">
+                      <input value = {recipeData.title} onChange={(e) => setRecipeData({...recipeData, title: e.target.value})}/>
+                  </div>
+                  <div className="recipeDataIngredients">
+                    <input value = {recipeData.ingredients} onChange={(e) => setRecipeData({...recipeData, ingredients: e.target.value})}/>
+                  </div>
+                  <div className="recipeDataPreparation">
+                    <input value = {recipeData.preparation} onChange={(e) => setRecipeData({...recipeData, preparation: e.target.value})}/>
+                  </div>
+                  <div className="recipeDataImages">
+                    {recipeData && recipeData.images && recipeData.images.map((image) => (
+                      <img src={image} />
+                    ))}
+                    Change images:
+                    <input
+                      type="file"
+                      multiple
+                      onChange={(e) => setFiles(e.target.files)}
+                    />
+                    
+                  </div>
+                  <button onClick={handleSave}>Save</button>
+                </div>
+              )}
+            </div>
+            {/* 
             <div className="chooseQanda">
               <select
                 onChange={(e) => {

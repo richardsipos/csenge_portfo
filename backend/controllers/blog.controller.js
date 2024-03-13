@@ -1,29 +1,39 @@
-import Recipe from "../models/recipe.model.js";
+import Blog from "../models/blog.model.js";
 // import createError from "../utils/createError.js";
 
-export const createRecipe = async (req, res, next) => {
+export const getBlogs = async (req, res, next) => {
 
-  const latestRecipe = await Recipe.findOne({}, {}, { sort: { _id: -1 } });
-  const latestId = latestRecipe ? latestRecipe.id : 0;
+  try {
+    const blogs = await Blog.find();
+    res.status(200).send(blogs);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const createBlog = async (req, res, next) => {
+
+  const latestBlog = await Blog.findOne({}, {}, { sort: { _id: -1 } });
+  const latestId = latestBlog ? latestBlog.id : 0;
 
   const newId = latestId + 1;
-  const newRecipe= new Recipe({
+  const newBlog= new Blog({
     id: newId,
     ...req.body,
   });
 
   try {
-    const savedRecipe = await newRecipe.save();
-    res.status(201).json(savedRecipe);
+    const savedBlog = await newBlog.save();
+    res.status(201).json(savedBlog);
   } catch (err) {
     console.log("ERRORRRRR")
     next(err.data);
   }
 };
 
-export const deleteRecipe = async (req, res, next) => {
+export const deleteBlog = async (req, res, next) => {
   try {
-    const result = await Recipe.deleteMany({id:req.params.id});
+    const result = await Blog.deleteMany({id:req.params.id});
     if (result.deletedCount > 0) {
       res.status(200).send("Recipe have been deleted!");
     } else {

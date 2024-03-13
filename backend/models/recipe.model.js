@@ -13,7 +13,7 @@ const RecipeSchema = new Schema(
     },
     images: {
         type: [String],
-        required: true,
+        required: false,
     },
     ingredients: {
       type: [String],
