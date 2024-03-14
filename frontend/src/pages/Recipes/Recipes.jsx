@@ -235,57 +235,6 @@ const Recipes = () => {
                 </div>
               )}
             </div>
-            {/* 
-            <div className="chooseQanda">
-              <select
-                onChange={(e) => {
-                  setOpenQandaPreview(false);
-
-                  //qanda.id === e.target.value));
-                  console.log("Before");
-                  console.log(data);
-                  console.log(e.target.value);
-                  setChooseQanda(
-                    data.find((qanda) => qanda.id == e.target.value)
-                  );
-                  console.log(chooseQanda);
-                  console.log("After");
-                }}
-              >
-                {!isLoading &&
-                  data.map((qanda) => (
-                    <option value={qanda.id}>{qanda.questions}</option>
-                  ))}
-              </select>
-              <button onClick={() => setOpenQandaPreview(true)}>Preview</button>
-              {openQandaPreview && (
-                <div className="previewQanda">
-                  OPEN PREVIEW
-                  {console.log(chooseQanda)}
-                  <div className="chooseQandaTitle">{chooseQanda.title}</div>
-                  <div className="chooseQandaQuestions">
-                    {chooseQanda.questions}
-                  </div>
-                  <div className="chooseQandaAnswers">
-                    {chooseQanda.answers}
-                  </div>
-                  <div className="chooseQandaDisplay">
-                    <label>Display </label>
-                    <input
-                      type="checkbox"
-                      checked={chooseQanda.display}
-                      onChange={() =>
-                        setChooseQanda({
-                          ...chooseQanda,
-                          display: !chooseQanda.display,
-                        })
-                      }
-                    />
-                  </div>
-                  <button onClick={handleSave}>Save</button>
-                </div>
-              )}
-            </div>*/}
           </div> 
         </div>
       )}

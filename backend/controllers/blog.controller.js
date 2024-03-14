@@ -15,7 +15,7 @@ export const createBlog = async (req, res, next) => {
 
   const latestBlog = await Blog.findOne({}, {}, { sort: { _id: -1 } });
   const latestId = latestBlog ? latestBlog.id : 0;
-
+  console.log("Controller blog creation: ",req.body)
   const newId = latestId + 1;
   const newBlog= new Blog({
     id: newId,

@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import qandaRoute from "./routes/qanda.route.js";
 import recipeRoute from "./routes/recipe.route.js";
-import authRoute from "./routes/auth.route.js";
+import blogRoute from "./routes/blog.route.js";
 import userRoute from "./routes/user.route.js";
+import authRoute from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -30,6 +31,8 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/qandas", qandaRoute);
 app.use("/api/recipes", recipeRoute);
+app.use("/api/blogs", blogRoute);
+//ird be
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

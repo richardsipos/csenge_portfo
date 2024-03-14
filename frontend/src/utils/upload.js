@@ -3,12 +3,14 @@ import axios from "axios";
 const upload = async (file,from,idToUse) => {
   const data = new FormData();
 
-  const fileName = `${idToUse}1.png`;
+  const fileName = `${idToUse}_1.png`;
   data.append("file", file);
   
   if(from === "recipes"){
     data.append("upload_preset", "recipes");
-  }   
+  }else if(from === "blogs"){
+    data.append("upload_preset", "csenge_portfo_blogs");
+  }
 
   try {
     console.log("Before axios post upload.js")
