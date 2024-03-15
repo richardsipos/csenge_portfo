@@ -10,6 +10,7 @@ const Qanda = () => {
   const [open, setOpen] = useState(false);
   const [openQandaPreview, setOpenQandaPreview] = useState(false);
   const [chooseQanda, setChooseQanda] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const minRef = useRef();
   const maxRef = useRef();
 
@@ -28,9 +29,7 @@ const Qanda = () => {
 
   const handleSave = async () => {
     try {
-      // Perform the PATCH request with the updated form data
       await newRequest.patch(`/qandas/${chooseQanda.id}`,chooseQanda);
-      // Refetch the data to update the UI
       refetch();
     } catch (error) {
       console.error("Error updating Q&A pair:", error);
@@ -77,8 +76,19 @@ const Qanda = () => {
                   <h4>{qanda.questions}</h4>
                   <button
                     onClick={async () =>{
-                      await newRequest.delete(`/qandas/${qanda.id}`);
-                      refetch();
+                      if (isDeleting) return;
+                          setIsDeleting(true);
+                          try {
+                            await newRequest.delete(`/qandas/${qanda.id}`);
+                            setIsDeleting(false);
+                            refetch();
+                          } catch (error) {
+                            if (error.response && error.response.status === 404) {
+                              console.log("Qanda post not found.");
+                            } else {
+                              console.error("Error deleting qanda post:", error);
+                            }
+                          } ;
                     }}
                   >
                     Delete

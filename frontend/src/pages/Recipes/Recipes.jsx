@@ -13,6 +13,7 @@ const Recipes = () => {
   const [openRecipePreview, setOpenRecipePreview] = useState(false);
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
 
   let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -183,8 +184,19 @@ const Recipes = () => {
                       <h4>{recipe.title}</h4>
                       <button
                         onClick={async () => {
-                          await newRequest.delete(`/recipes/${recipe.id}`);
-                          refetch();
+                          if (isDeleting) return;
+                          setIsDeleting(true);
+                          try {
+                            await newRequest.delete(`/recipes/${recipe.id}`);
+                            setIsDeleting(false);
+                            refetch();
+                          } catch (error) {
+                            if (error.response && error.response.status === 404) {
+                              console.log("Recipe not found.");
+                            } else {
+                              console.error("Error deleting recipe:", error);
+                            }
+                          } 
                         }}
                       >
                         Delete

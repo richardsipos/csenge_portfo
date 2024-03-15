@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { recipes } from "../../assets/data";
-import { blogs } from "../../assets/data";
+// import { blogs } from "../../assets/data";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/upload";
@@ -21,6 +21,8 @@ const Home = () => {
 
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const handleUpload = async () => {
     setUploading(true);
@@ -72,7 +74,7 @@ const Home = () => {
   const [blogMiddle, setBlogMiddle] = useState(1);
 
   const handleArrowDown = () => {
-    if (blogMiddle < blogs.length - 2) {
+    if (blogMiddle < data.length - 2) {
       console.log(blogMiddle);
       setBlogMiddle(blogMiddle + 1);
     }
@@ -102,98 +104,121 @@ const Home = () => {
           <img src={recipes[0].images[0]}></img>
         </div>
       </div>
-      <div className="adminSection">
-        <div className="createBlogPost">
-          <p>Add new blogposts:</p>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="">Upload Images</label>
-            <input
-              type="file"
-              multiple
-              onChange={(e) => setFiles(e.target.files)}
-            />
-            <button type="submit">Create</button>
-          </form>
-        </div>
-        <div className="deleteBlogPost">
+      {currentUser && currentUser.isAdmin && (
+        <div className="adminSection">
+          <div className="createBlogPost">
+            <p>Add new blogposts:</p>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="">Upload Images:</label><br/>
+              <input
+                type="file"
+                multiple
+                onChange={(e) => setFiles(e.target.files)}
+              /><br/>
+              <br/>
+              <button type="submit">Create</button>
+            </form>
+          </div>
           <div className="deleteBlogPost">
-            {isLoading
-              ? "loading"
-              : error
-              ? "Something went wrong!"
-              : data.map((blog, index) => (
-                  <div className="deleteBlogRow" key={blog.id}>
-                    <div className="deleteBlogPostForm">
-                      <img src={blog.images[0]} alt={`Blog ${blog.id}`} />
-                      <button
-                        onClick={async () => {
-                          await newRequest.delete(`/blogs/${blog.id}`);
-                          refetch();
-                        }}
-                      >
-                        Delete
-                      </button>
+            <div className="deleteBlogPost">
+              {isLoading
+                ? "loading"
+                : error
+                ? "Something went wrong!"
+                : data.map((blog, index) => (
+                    <div className="deleteBlogRow" key={blog.id}>
+                      <div className="deleteBlogPostForm">
+                        <img src={blog.images[0]} alt={`Blog ${blog.id}`} />
+                        <button
+                          onClick={async () => {
+                            if (isDeleting) return;
+                            setIsDeleting(true);
+                            try {
+                              await newRequest.delete(`/blogs/${blog.id}`);
+                              setIsDeleting(false);
+                              refetch();
+                            } catch (error) {
+                              if (error.response && error.response.status === 404) {
+                                console.log("Blog post not found.");
+                              } else {
+                                console.error("Error deleting blog post:", error);
+                              }
+                            } 
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="blogPosts">
         <div className="title">
           <p>Latest news!</p>
         </div>
-        <div className="posts">
-          <div className="readScreen">
-            <Swiper className="mySwiperLeftFull">
-              {blogs[blogMiddle].images.map((img, index) => (
-                <SwiperSlide key={index} className="swiper-slide">
-                  <img src={img} alt="" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+        {isLoading
+          ? "loading"
+          : error
+          ? "Something went wrong!"
+          :  (
+          <div className="posts">
+            <div className="readScreen">
+              <Swiper className="mySwiperLeftFull">
+                {data[blogMiddle].images.map((img, index) => (
+                  <SwiperSlide key={index} className="swiper-slide">
+                    <img src={img} alt="" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="scrollScreen">
+              {blogMiddle > 1 ? (
+                <HiChevronUp
+                  className={"topArrow" + " arrow"}
+                  onClick={handleArrowUp}
+                />
+              ) : (
+                ""
+              )}
+              <div className="upperImageScroll">
+                {data[blogMiddle-1] 
+                ? <img src={data[blogMiddle-1].images[0]} className="top" alt="" />
+                : (
+                    <img src="" className="top" alt="" />
+                )}
+              </div>  
+               
+              <div className="middleImageScroll">
+                {data[blogMiddle] 
+                ? <img src={data[blogMiddle].images[0]} className="middle" alt="" />
+                : (
+                    <img src="" className="middle" alt="" />
+                )}
+              </div>
+              <div className="bottomImageScroll">
+                {data[blogMiddle+1] 
+                ? <img src={data[blogMiddle+1].images[0]} className="bottom" alt="" />
+                : (
+                    <img src="" className="bottom" alt="" />
+                )}
+              </div>
+                
+
+              {blogMiddle < data.length - 2 ? (
+                <HiChevronDown
+                  className={"bottomArrow" + " arrow"}
+                  onClick={handleArrowDown}
+                />
+              ) : (
+                ""
+              )}
+            </div>
           </div>
-          <div className="scrollScreen">
-            {blogMiddle > 1 ? (
-              <HiChevronUp
-                className={"topArrow" + " arrow"}
-                onClick={handleArrowUp}
-              />
-            ) : (
-              ""
-            )}
-            <Swiper className="mySwiper">
-              {blogs[blogMiddle - 1].images.map((img, index) => (
-                <SwiperSlide key={index} className="swiper-slide">
-                  <img src={img} alt="" className="upper" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <Swiper className="mySwiperMiddle">
-              {blogs[blogMiddle].images.map((img, index) => (
-                <SwiperSlide key={index} className="swiper-slide">
-                  <img src={img} alt="" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <Swiper className="mySwiper">
-              {blogs[blogMiddle + 1].images.map((img, index) => (
-                <SwiperSlide key={index} className="swiper-slide">
-                  <img src={img} className="bottom" alt="" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            {blogMiddle < blogs.length - 2 ? (
-              <HiChevronDown
-                className={"bottomArrow" + " arrow"}
-                onClick={handleArrowDown}
-              />
-            ) : (
-              ""
-            )}
-          </div>
+          )}
         </div>
-      </div>
       <div className="qanda">
         <h1>Do you have a question? Contact me without remorse!</h1>
         <h2>
