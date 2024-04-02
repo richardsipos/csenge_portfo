@@ -2,7 +2,8 @@
 
     min-height: calc(100vh - 10vh);
     background-color: #ece4df; //#ece4df #dac8bc
-    padding-bottom: 1%;
+    padding-bottom: 8%;
+
     
     .adminDashboard {
         background-color: rgb(250, 84, 84); /* Same color as before */
@@ -105,4 +106,47 @@
     }
 
 
+}
+
+
+@media screen and (max-width: 900px) {
+  .recipesPage{
+    padding-bottom: 20%;
+  }
+  .functions > div {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .functions .deleteRecipe,
+  .functions .editRecipe {
+    flex-direction: column;
+  }
+
+  .functions .deleteRecipe .deleteRecipeForm button,
+  .functions .editRecipe button {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .recipesPage{
+    padding-bottom: 40%;
+  }
+  .functions > div {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .functions .deleteRecipe,
+  .functions .editRecipe {
+    flex-direction: column;
+  }
+
+  .functions .deleteRecipe .deleteRecipeForm button,
+  .functions .editRecipe button {
+    width: auto;
+  }
 }

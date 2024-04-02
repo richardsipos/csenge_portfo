@@ -77,46 +77,6 @@
   }
 
 
-  // .adminDashboard{
-
-  //   background-color: rgb(250, 84, 84);
-  //   padding-top: 3%;
-  //   width: 100%;
-  //   height: 50vh;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap:3%;
-
-  //   .adminTitle{
-  //     color: white;
-  //     font-size: 2rem;
-  //   }
-
-  //   .functions{
-  //     display: flex;
-  //     flex-direction: row;
-  //     gap: 5%;
-  //     justify-content: center;
-  //   }
-
-
-  //   .createQanda{
-  //     display: flex;
-  //     flex:1;
-      
-  //   }
-
-  //   .deleteQanda{
-  //     display: flex;
-  //     flex: 1;
-  //   }
-
-  //   .chooseQanda{
-  //     display: flex;
-  //     flex: 1;
-  //   }
-  // }
-
   .adminDashboard {
     background-color: rgb(250, 84, 84); /* Same color as before */
     padding: 20px; /* Padding to give some space */
@@ -247,5 +207,22 @@
 
       
     }
+  }
+
+  .functions > div {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .functions .deleteQanda,
+  .functions .chooseQanda {
+    flex-direction: column;
+  }
+
+  .functions .deleteQanda .deleteQandaForm,
+  .functions .chooseQanda select,
+  .functions .chooseQanda button {
+    width: auto;
   }
 }

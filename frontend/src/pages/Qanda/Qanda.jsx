@@ -21,8 +21,6 @@ const Qanda = () => {
     queryKey: ["qandas"],
     queryFn: () =>
       newRequest.get(`/qandas`).then((res) => {
-        console.log(search);
-        console.log(res);
         return res.data;
       }),
   });
@@ -33,6 +31,19 @@ const Qanda = () => {
       refetch();
     } catch (error) {
       console.error("Error updating Q&A pair:", error);
+    }
+  };
+
+  const handleCreateQanda = async () => {
+    try {
+      await newRequest.post("/qandas", {
+        questions: minRef.current.value,
+        answers: maxRef.current.value,
+      });
+      setOpen(false);
+      refetch(); // Fetch the updated data after posting a new Q&A
+    } catch (error) {
+      console.error("Error creating Q&A pair:", error);
     }
   };
 
@@ -51,16 +62,7 @@ const Qanda = () => {
               <div className="createQandaForm">
                 <input type="text" placeholder="Question" ref={minRef} />
                 <input type="text" placeholder="Answer" ref={maxRef} />
-                <button
-                  onClick={async () => {
-                    newRequest.post("/qandas", {
-                      questions: minRef.current.value,
-                      answers: maxRef.current.value,
-                    });
-                    refetch();
-                    setOpen(false);
-                  }}
-                >
+                <button onClick={handleCreateQanda}>
                   Create
                 </button>
               </div>
@@ -109,11 +111,9 @@ const Qanda = () => {
                 ))
               }
             </select>
-            <button onClick={()=>setOpenQandaPreview(true)}>Preview</button>
+            <button onClick={()=>setOpenQandaPreview(!openQandaPreview)}>Preview</button>
             {openQandaPreview &&
               <div className="previewQanda">
-                OPEN PREVIEW
-                {console.log(chooseQanda)}
                 <div className="chooseQandaTitle">
                   {chooseQanda.title}
                 </div>
@@ -152,6 +152,7 @@ const Qanda = () => {
               : error
               ? "Something went wrong!"
               : data
+                  .filter((qanda, index) => index % 2 === 0)
                   .map((qanda) => ( qanda.display === true &&
                     <div className="questionAnswer" key={qanda.id}>
                       <h4>{qanda.questions}</h4>
@@ -181,15 +182,18 @@ const Qanda = () => {
             </p>
           </div>
           <div className="qandaRow">
-            {qanda
-              .slice(0, 10)
-              .filter((qa, index) => index % 2 === 1)
-              .map((qa, index) => (
-                <div className="questionAnswer" key={index}>
-                  <h4>{qa.questions}</h4>
-                  <p>{qa.answers}</p>
-                </div>
-              ))}
+          {isLoading
+              ? "loading"
+              : error
+              ? "Something went wrong!"
+              : data
+                  .filter((qanda, index) => index % 2 === 1)
+                  .map((qanda) => ( qanda.display === true &&
+                    <div className="questionAnswer" key={qanda.id}>
+                      <h4>{qanda.questions}</h4>
+                      <p>{qanda.answers}</p>
+                    </div>
+                ))}
           </div>
         </div>
       </div>

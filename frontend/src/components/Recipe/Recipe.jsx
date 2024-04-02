@@ -8,7 +8,6 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 const Recipe = ({ props }) => {
   return (
     <div className="recipe">
@@ -20,10 +19,6 @@ const Recipe = ({ props }) => {
             pagination={{
               clickable: true,
             }}
-            // autoplay={{
-            //     delay: 4500,
-            //     disableOnInteraction: false,
-            // }}
             style={{
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
@@ -34,22 +29,24 @@ const Recipe = ({ props }) => {
             modules={[Autoplay, EffectFade, Navigation, Pagination]}
             className="mySwiper"
           >
-            
-            {props.images.length > 0 ? props.images.map((imgsrc, index) => (
+            {props.images.length > 0 ? (
+              props.images.map((imgsrc, index) => (
+                <SwiperSlide className="swiper-slide" key={index}>
+                  <img src={imgsrc} alt={`Swiper Image ${index}`} />
+                </SwiperSlide>
+              ))
+            ) : (
               <SwiperSlide className="swiper-slide">
-              
-                <img key={imgsrc} src={imgsrc} alt={`Swiper Image ${index}`} />{" "}
+                <img src={Logo_csenge} alt="placeholder" />
               </SwiperSlide>
-            ))
-              : <SwiperSlide className="swiper-slide"><img src={Logo_csenge} alt="placeholder" /></SwiperSlide>
-          }
+            )}
           </Swiper>
 
           <div className="ingredients">
-            <h2> {props.title} </h2>
+            <h2>{props.title}</h2>
             <ul>
               {props.ingredients.map((ingredient, index) => (
-                <li> {ingredient} </li>
+                <li key={index}>{ingredient}</li>
               ))}
             </ul>
           </div>
@@ -57,10 +54,10 @@ const Recipe = ({ props }) => {
       ) : (
         <div className="recipeTopOdd">
           <div className="ingredients">
-            <h2> {props.title} </h2>
+            <h2>{props.title}</h2>
             <ul>
               {props.ingredients.map((ingredient, index) => (
-                <li> {ingredient} </li>
+                <li key={index}>{ingredient}</li>
               ))}
             </ul>
           </div>
@@ -69,10 +66,6 @@ const Recipe = ({ props }) => {
             pagination={{
               clickable: true,
             }}
-            // autoplay={{
-            //     delay: 3500,
-            //     disableOnInteraction: false,
-            // }}
             style={{
               "--swiper-navigation-color": "#fff",
               "--swiper-pagination-color": "#fff",
@@ -84,9 +77,8 @@ const Recipe = ({ props }) => {
             className="mySwiper"
           >
             {props.images.map((imgsrc, index) => (
-              <SwiperSlide className="swiper-slide">
-                {" "}
-                <img src={imgsrc} alt={`Swiper Image ${index}`} />{" "}
+              <SwiperSlide className="swiper-slide" key={index}>
+                <img src={imgsrc} alt={`Swiper Image ${index}`} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -11,7 +11,9 @@
     
     color: black;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    //font-family: 'Roboto', sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman';
+    
 
 
 
@@ -48,7 +50,7 @@
             justify-content: end;
             
             
-            gap: 7%;
+            gap: 3%;
             padding-right: 2%;
 
         }
@@ -124,5 +126,51 @@
 
         }
 
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar{
+        font-size: 0.8rem;
+    }
+    
+    .logo{
+        display: flex;
+
+        
+        flex:1;
+        align-items: center;
+        justify-content: start;
+        padding-left: 3%;
+        margin-right: 5%;;
+        
+        img{
+            border-radius: 50%;
+            min-height: 65%;
+            min-width: 65%;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar{
+        font-size: 0.8rem;
+    }
+    
+    .logo{
+        display: flex;
+
+        
+        flex:1;
+        align-items: center;
+        justify-content: start;
+        padding-left: 3%;
+        margin-right: 5%;;
+        
+        img{
+            border-radius: 50%;
+            min-height: 85%;
+            min-width: 85%;
+        }
     }
 }

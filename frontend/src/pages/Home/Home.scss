@@ -394,3 +394,42 @@
   }
 }
 
+@media (max-width: 768px) {
+  .firstPreview {
+    flex-direction: column-reverse; // Reversed for smaller screens
+  }
+
+  .blogPosts {
+    margin: 0; // Removed margin for smaller screens
+    .posts {
+      flex-direction: column; // Adjusted for smaller screens
+      height: auto; // Adjusted for smaller screens
+
+      .scrollScreen{
+        margin-top: 5%;
+
+        .upperImageScroll, .bottomImageScroll{
+          
+          img{
+            height: 150px !important;
+          }
+          
+        }
+      }
+
+      
+    }
+  }
+
+  .recipes,
+  .about {
+    flex-direction: column; // Adjusted for smaller screens
+    margin: 0; // Removed margin for smaller screens
+
+    .homeImg,
+    .homeText {
+      margin: 0; // Removed margin for smaller screens
+    }
+  }
+}
+

@@ -1,7 +1,8 @@
 .recipe{
 
     width: auto;
-    height: 40vh;
+    height: 50vh;
+    
     
     border: 5px solid rgb(125, 15, 7);
     border-radius: 5px;
@@ -99,35 +100,40 @@
 
 
 @media (max-width: 1400px) {
+    .recipe {
+      margin: 8% 0%;
 
-
-    .recipe{
-        margin: 5% 0%;
-
-        .recipeTopEven, .recipeTopOdd{
-            // padding: 15% 0%
-            
-            .ingredients{
-                font-size: 0.9rem;
-            }
+      .recipeTopEven,
+      .recipeTopOdd {
+        .ingredients {
+          font-size: 0.9rem;
         }
-
+      }
     }
-}
+  }
 
-@media (max-width: 700px) {
+  @media (max-width: 1100px) {
+    .recipe {
+      margin: 12% 0%;
 
-
-    .recipe{
-        margin: 15% 0%;
-
-        .recipeTopEven, .recipeTopOdd{
-            // padding: 15% 0%
-            
-            .ingredients{
-                font-size: 0.7rem;
-            }
+      .recipeTopEven,
+      .recipeTopOdd {
+        .ingredients {
+          font-size: 0.8rem;
         }
-
+      }
     }
-}
+  }
+
+  @media (max-width: 700px) {
+    .recipe {
+      margin: 15% 0%;
+
+      .recipeTopEven,
+      .recipeTopOdd {
+        .ingredients {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
