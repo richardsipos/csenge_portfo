@@ -30,19 +30,16 @@ const Home = () => {
       const maxId =
         data.reduce((max, recipe) => (recipe.id > max ? recipe.id : max), 0) +
         1;
-      console.log("In upload method serach for files: ", files);
       const images = await Promise.all(
         [...files].map(async (file) => {
           const url = await upload(file, "blogs", maxId);
           return url;
         })
       );
-      console.log("Image links:", images);
       setUploading(false);
       const imageLinks = images.map((image) => String(image));
       return imageLinks;
     } catch (err) {
-      console.log(err.data);
       return [];
     }
   };
@@ -50,7 +47,6 @@ const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("Files to unpack:", files);
       const imageLinks = await handleUpload();
 
       await newRequest.post("/blogs", {
@@ -75,7 +71,6 @@ const Home = () => {
 
   const handleArrowDown = () => {
     if (blogMiddle < data.length - 2) {
-      console.log(blogMiddle);
       setBlogMiddle(blogMiddle + 1);
     }
   };
@@ -139,7 +134,7 @@ const Home = () => {
                               refetch();
                             } catch (error) {
                               if (error.response && error.response.status === 404) {
-                                console.log("Blog post not found.");
+                                console.error("Blog post not found:", error);
                               } else {
                                 console.error("Error deleting blog post:", error);
                               }

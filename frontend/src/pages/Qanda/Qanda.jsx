@@ -86,7 +86,7 @@ const Qanda = () => {
                             refetch();
                           } catch (error) {
                             if (error.response && error.response.status === 404) {
-                              console.log("Qanda post not found.");
+                              console.error("Qanda post not found:", error);
                             } else {
                               console.error("Error deleting qanda post:", error);
                             }

@@ -59,7 +59,6 @@ const Recipes = () => {
       );
       setUploading(false);
       const imageLinks = images.map((image) => String(image));
-      console.log('Uplaoded: ',imageLinks)
       setRecipeData((recipeData) => ({
         ...recipeData,
         images: imageLinks,
@@ -67,7 +66,7 @@ const Recipes = () => {
 
       return imageLinks;
     } catch (err) {
-      console.log(err.data);
+      console.error(err.data);
       return [];
     }
   };
@@ -103,9 +102,7 @@ const Recipes = () => {
   const handleSave = async (event) => {
     event.preventDefault();
     try {
-      console.log("recipeData: ", recipeData);
       const imageLinks = await handleUpload();
-      console.log("elotte")
       await newRequest.patch(`/recipes/${recipeData.id}`,         
       {
         id: recipeData.id,
@@ -114,7 +111,6 @@ const Recipes = () => {
         ingredients: recipeData.ingredients,
         images: imageLinks,
       });
-      console.log("gatya")
       setOpen(false)
       refetch();
     }
@@ -192,7 +188,7 @@ const Recipes = () => {
                             refetch();
                           } catch (error) {
                             if (error.response && error.response.status === 404) {
-                              console.log("Recipe not found.");
+                              console.error("Recipe not found!",error);
                             } else {
                               console.error("Error deleting recipe:", error);
                             }
@@ -211,7 +207,6 @@ const Recipes = () => {
                   setRecipeData(
                     data.find((recipe) => recipe.id == e.target.value)
                   );
-                  console.log(recipeData.id);
                 }}
               >
                 {!isLoading &&
