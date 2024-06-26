@@ -15,7 +15,6 @@ export const createBlog = async (req, res, next) => {
 
   const latestBlog = await Blog.findOne({}, {}, { sort: { _id: -1 } });
   const latestId = latestBlog ? latestBlog.id : 0;
-  console.log("Controller blog creation: ",req.body)
   const newId = latestId + 1;
   const newBlog= new Blog({
     id: newId,
@@ -26,7 +25,6 @@ export const createBlog = async (req, res, next) => {
     const savedBlog = await newBlog.save();
     res.status(201).json(savedBlog);
   } catch (err) {
-    console.log("ERRORRRRR")
     next(err.data);
   }
 };
@@ -48,7 +46,6 @@ export const deleteBlog = async (req, res, next) => {
 
 export const getRecipes = async (req, res, next) => {
     const q = req.query;
-    console.log("Get")
     try {
       const recipes = await Recipe.find();
       res.status(200).send(recipes);
@@ -59,7 +56,6 @@ export const getRecipes = async (req, res, next) => {
 
   export const editRecipe = async (req, res, next) => {
     try {
-      console.log("editRecipe:" + req.params.id + " " + req.body);
   
       const updatedRecipe = await Recipe.updateOne(
         { id: req.params.id }, // Finding the recipe by its ID

@@ -13,13 +13,11 @@ const upload = async (file,from,idToUse) => {
   }
 
   try {
-    console.log("Before axios post upload.js")
     const res = await axios.post("https://api.cloudinary.com/v1_1/dyei5xnce/image/upload", data);// import.meta.env.VITE_UPLOAD_LINK
-    console.log("After axios post upload.js")
     const { url } = res.data;
     return url;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

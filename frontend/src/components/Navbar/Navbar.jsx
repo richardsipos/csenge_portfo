@@ -17,7 +17,6 @@ const Navbar = () =>{
           localStorage.setItem("currentUser", null);
           navigate("/");
         } catch (err) {
-          console.log(err);
         }
     };
 

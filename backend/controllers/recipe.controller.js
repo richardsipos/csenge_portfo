@@ -16,7 +16,6 @@ export const createRecipe = async (req, res, next) => {
     const savedRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (err) {
-    console.log("ERRORRRRR")
     next(err.data);
   }
 };
@@ -38,7 +37,6 @@ export const deleteRecipe = async (req, res, next) => {
 
 export const getRecipes = async (req, res, next) => {
     const q = req.query;
-    console.log("Get")
     try {
       const recipes = await Recipe.find();
       res.status(200).send(recipes);
@@ -49,7 +47,6 @@ export const getRecipes = async (req, res, next) => {
 
   export const editRecipe = async (req, res, next) => {
     try {
-      console.log("editRecipe:" + req.params.id + " " + req.body);
   
       const updatedRecipe = await Recipe.updateOne(
         { id: req.params.id }, // Finding the recipe by its ID

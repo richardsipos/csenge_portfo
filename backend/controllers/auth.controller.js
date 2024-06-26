@@ -54,7 +54,6 @@ export const modifyProfile = async(req,res,next) => {
     let currentUser = await User.findOne({username:req.body.currentUsername});// JSON.parse(localStorage.getItem("currentUser"));
     
     if(currentUser === null){
-      console.log("404 Not found!")
       return next(createError(404, "Inexsitent user!"));
     }
     
@@ -83,7 +82,6 @@ export const modifyProfile = async(req,res,next) => {
     .send("User has been logged out.");
 
   }catch(err){
-    console.log(err)
     next(err);
   }
 }

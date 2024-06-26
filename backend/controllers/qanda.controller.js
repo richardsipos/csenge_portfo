@@ -25,7 +25,6 @@ export const createQanda = async (req, res, next) => {
 export const deleteQanda = async (req, res, next) => {
   try {
     const result = await Qanda.deleteMany({id:req.params.id});
-    console.log(result.deletedCount)
     if (result.deletedCount > 0) {
       res.status(200).send("Q&A pairs have been deleted!");
     } else {
@@ -39,23 +38,16 @@ export const deleteQanda = async (req, res, next) => {
 
 export const getQandas = async (req, res, next) => {
     const q = req.query;
-    // const filters = {
-    //   ...(q.id && { id: q.id }),
-    // };
-    console.log("Get")
     try {
-      const qandas = await Qanda.find();//.sort({ [q.sort]: -1 });  //.find(filters).
+      const qandas = await Qanda.find();
       res.status(200).send(qandas);
     } catch (err) {
-      // console.log("Nincs error")
       next(err);
     }
   };
 
   export const editQanda = async (req, res, next) => {
-    console.log("editing...")
     try {
-      console.log(req.body)
       const updatedQanda = await Qanda.findOneAndUpdate(
         { id: req.params.id },
         { $set: { display: req.body.display } },
