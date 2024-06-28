@@ -32,6 +32,11 @@ app.use("/api/users", userRoute);
 app.use("/api/qandas", qandaRoute);
 app.use("/api/recipes", recipeRoute);
 app.use("/api/blogs", blogRoute);
+
+app.get('/', (req, res) => {
+  res.send('Hello, this is your Express server!');
+});
+
 //ird be
 
 app.use((err, req, res, next) => {
